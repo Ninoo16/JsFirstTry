@@ -27,7 +27,7 @@ function playRound(playerSelection, computerSelection) {
 }
 function game() {
     let playerScore = 0;
-    let computerScore = 0;
+    let computerScore = 0; 
     let round = 1;
     while (round <= 5) {
         const playerSelection = prompt("enter your choice: rock, paper, scissors");
