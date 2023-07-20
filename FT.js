@@ -1,3 +1,4 @@
+
 function getComputerChoice() {
     let randomNumber = Math.floor(Math.random() *3);
     switch (randomNumber) {
@@ -5,7 +6,7 @@ function getComputerChoice() {
             return "rock";
             case 1:
                 return "paper";
-                case 3:
+                case 2:
                     return "scissors";
     }
 }
@@ -25,11 +26,14 @@ function playRound(playerSelection, computerSelection) {
     }
 
 }
+
+
+
 function game() {
-    let playerScore = 0;
-    let computerScore = 0; 
-    let round = 1;
-    while (round <= 5) {
+     let playerScore = 0;
+     let computerScore = 0;
+    
+    while (true) {
         const playerSelection = prompt("enter your choice: rock, paper, scissors");
         const computerSelection = ["rock", "paper","scissors"]
         [Math.floor(Math.random()*3)];
@@ -41,7 +45,44 @@ function game() {
             computerScore++
         }
         console.log(`player score: ${playerScore} computer score ${computerScore}`);
-        round++;
+        
     }
 }
+// Function to handle the button clicks
+
+function updateScore(result) {
+    let playerScore =0;
+    let computerScore = 0;
+    if(result.includes("win")) {
+        playerScore++;
+    } else if(result.includes("lose")) {
+        computerScore++;
+    }
+    console.log(`player score: ${playerScore} computer score ${computerScore}`);
+}
+
+function handleClick(event) {
+    const playerSelection = event.target.id;
+    const computerSelection = getComputerChoice();
+    const result = playRound(playerSelection, computerSelection);
+  
+    const resultDisplay = document.getElementById("result");
+    resultDisplay.textContent = `You chose ${playerSelection}, Computer chose ${computerSelection}. ${result}`;
+    updateScore(result);
+}
+
+  // Add event listeners to the buttons
+  const rockButton = document.getElementById("rock");
+  const paperButton = document.getElementById("paper");
+  const scissorsButton = document.getElementById("scissors");
+  
+  rockButton.addEventListener("click", handleClick);
+  paperButton.addEventListener("click", handleClick);
+  scissorsButton.addEventListener("click", handleClick);
+
+let computerScore = 0
+let playerScore = 0
+
+
+
     
